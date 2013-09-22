@@ -1,0 +1,123 @@
+12 FoxAndGomoku
+3 win
+16 java.lang.String
+1
+18 java.lang.String[]
+5 board
+9
+0
+1
+String[] 6
+6 ....o.
+6 ...o..
+6 ..o...
+6 .o....
+6 o.....
+6 ......
+String
+5 found
+1
+1
+1
+String[] 5
+5 oooo.
+5 .oooo
+5 oooo.
+5 .oooo
+5 .....
+String
+9 not found
+1
+2
+1
+String[] 5
+5 oooo.
+5 .oooo
+5 oooo.
+5 .oooo
+5 ....o
+String
+5 found
+1
+3
+1
+String[] 6
+6 o.....
+6 .o....
+6 ..o...
+6 ...o..
+6 ....o.
+6 ......
+String
+5 found
+1
+4
+1
+String[] 5
+5 o....
+5 o.o..
+5 o.o.o
+5 o.o..
+5 o....
+String
+5 found
+1
+5
+1
+String[] 10
+10 ..........
+10 ..........
+10 ..oooooo..
+10 ..o.......
+10 ..o.......
+10 ..oooooo..
+10 .......o..
+10 .......o..
+10 ..oooooo..
+10 ..........
+String
+5 found
+1
+6
+1
+String[] 10
+10 ..........
+10 ..........
+10 ..oooo.o..
+10 ..o.......
+10 ..o.......
+10 ..o.oooo..
+10 .......o..
+10 .......o..
+10 ..oooo.o..
+10 ..........
+String
+9 not found
+1
+7
+1
+String[] 5
+5 ooooo
+5 ooooo
+5 ooooo
+5 ooooo
+5 ooooo
+String
+5 found
+1
+8
+1
+String[] 5
+5 .....
+5 .....
+5 .....
+5 .....
+5 .....
+String
+9 not found
+1
+10 2013.09.17
+17 TopCoder SRM #590
+0
+19 coding.FoxAndGomoku
+1
