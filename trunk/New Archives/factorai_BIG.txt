@@ -1,0 +1,5 @@
+BigInteger fact(int n){
+    if(n==0)return BigInteger.ONE;
+    else return BigInteger.valueOf(n).multiply(fact(n-1));
+    
+    }

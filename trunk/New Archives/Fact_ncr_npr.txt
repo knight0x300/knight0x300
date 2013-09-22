@@ -1,0 +1,23 @@
+public static double fact(long n){
+double i=n,j,result;
+result = 1;
+for (j=i;j>=1;j--)
+result = result*j;
+return result;
+}
+
+public static double ncr(long n,long r){
+double i=n,j,result;
+result = 1;
+for (j=n;j>=n-r+1;j--)
+result = result*j;
+return result/fact(r);
+}
+
+public static double npr(long n,long r){
+double i=n,j,result;
+result = 1;
+for (j=n;j>=n-r+1;j--)
+result = result*j;
+return result;
+}

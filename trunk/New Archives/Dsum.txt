@@ -1,0 +1,11 @@
+ public static int Dsum (int n){
+ int dsum=0;
+ int te=n;
+ while(te>0)
+      {
+     dsum+=te%10;
+      te/=10;
+      }
+return dsum;
+ 
+ }  

@@ -1,0 +1,17 @@
+static int ub=;//upper bound
+static boolean[] primes=new boolean[ub+1];
+static int[] Primes= new int[];//sufficiently large ot Ppi
+static  int Ppi=0; 
+static void Primegen(){
+    
+        for(int i=2;i<=ub;i++)
+        {if(!primes[i])
+        {Primes[Ppi]=i;
+        Ppi++;
+        for(int j=2;j*i<=ub;j++)
+            primes[j*i]=true;      
+        }
+            }
+        System.out.println(Ppi);
+        System.out.println(Primes[Ppi-1]);
+}

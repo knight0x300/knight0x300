@@ -1,0 +1,52 @@
+ public static void main(String[] args) {
+        int M=15,N=10;// [i][j]  [0-M][0-N] ...(M+1)*(N+1)
+         int[][]  A= new int[M+1][N+1];
+         A[0][0]=0;
+         int t=1;
+        for(int i=1;i<=Math.min(M, N);i++){
+          for(int j=0;j<=i;j++)
+          {  
+              A[j][i-j]=t;
+              t++;
+          //code
+          }}
+              if(N>M){
+       for(int i=M+1;i<=N;i++)
+       {  for(int j=0;j<=M;j++)
+       {   A[j][i-j]=t;
+              t++;
+       //code
+       
+       }}}
+       if(M>N){
+       for(int i=N+1;i<=M;i++)
+       {  for(int j=i-N;j<=i;j++)
+       {
+           A[j][i-j]=t;
+              t++;   
+              //code
+       }}}
+        
+       if(N>=M) 
+       for(int i=Math.max(M, N)+1;i<=M+N;i++)
+       {  for(int j=i-Math.max(M, N);j<=Math.min(M, N);j++)
+       {
+       A[j][i-j]=t;
+              t++;
+              //code
+          }}
+       else{
+        for(int i=M+1;i<=M+N;i++)
+       {  for(int j=i-N;j<=M;j++)
+       {
+       A[j][i-j]=t;
+              t++;
+              //code
+          }}
+       
+       }
+    for(int i=0;i<=M;i++)
+    {for(int j=0;j<=N;j++)
+            System.out.print(A[i][j]+" ");
+        System.out.println("");
+     }}

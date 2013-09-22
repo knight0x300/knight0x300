@@ -1,0 +1,58 @@
+//// functions
+static int getDivisors(int[] primes, int[] pows, int primesCount, int[] answer) {
+		return goDivisors(primes, pows, primesCount, 0, 1, answer, 0);
+	}
+
+	static int goDivisors(int[] primes, int[] pows, int primesCount, int start, int have,
+			int[] answer, int haveAnswer) {
+		if (start == primesCount) {
+			answer[haveAnswer++] = have;
+			return haveAnswer;
+		}
+		for (int pow = 0; pow <= pows[start]; pow++) {
+			haveAnswer = goDivisors(primes, pows, primesCount, start + 1, have, answer, haveAnswer);
+			have *= primes[start];
+		}
+
+		return haveAnswer;
+	}
+/////////////////////////////////
+
+/////////////code
+////////////////////////////////////// prime signature
+int maxA//upperbound
+int[] someDivisor = new int[maxA + 1];
+		for (int i = 2; i * i <= maxA; i++) {
+			if (someDivisor[i] != 0) {
+				continue;
+			}
+			for (int j = i * i; j <= maxA; j += i) {
+				someDivisor[j] = i;
+			}
+		}
+//then for a wanted integer "value"
+int[] divisorList = new int[1000];
+int[] primes = new int[100];
+int[] pows = new int[100];
+
+int value;
+int pp=0;
+while (someDivisor[value] > 0) {
+				int p = someDivisor[value];
+				int pow = 0;
+				while (value % p == 0) {
+					value /= p;
+					++pow;
+				}
+				primes[pp] = p;
+				pows[pp] = pow;
+				++pp;
+			}
+			if (value > 1) {
+				primes[pp] = value;
+				pows[pp] = 1;
+				++pp;
+			}
+////////////////////////////////////// divisors
+int dCount = getDivisors(primes, pows, pp, divisorList);
+	sort(divisorList, 0, dCount);

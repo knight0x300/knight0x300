@@ -1,0 +1,25 @@
+static int[] parent; // n+1
+ static int count;
+private void init() {
+ for (int i = 1; i < parent.length; i++) {
+            parent[i]=i;
+        }
+
+}
+
+private void union(int st, int en) {
+       int ss=par(st),ee=par(en);
+       if(ss!=ee){
+       parent[ss]=ee;
+       count--;
+       }
+       
+    }
+
+    private int par(int th) {
+        if(parent[th]==th)return th;
+        else {
+            int k=par(parent[th]);
+            parent[th]=k;
+            return k;}
+    }  

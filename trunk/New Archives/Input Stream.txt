@@ -1,0 +1,13 @@
+Scanner scn=new Scanner(System.in);
+        java.io.InputStreamReader x  ;
+      java.io.InputStream y;
+       BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+       String line=null;   
+
+//read ints
+r=reader.read();
+   while((r>=(int)'0')&&(r<=(int)'9'))
+  {
+      i=i*10+r-(int)'0';
+  r=reader.read();
+  }

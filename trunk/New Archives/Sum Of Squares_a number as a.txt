@@ -1,0 +1,31 @@
+ static int[][] crnt=new int[18][2];
+    static int tgt;
+//static  int[] Primes=new int[40000000];
+public static void SOC (int cnt , int a , int b){
+    if(cnt<tgt){
+        int t1,t2,t3,t4,n=a*a+b*b,k1,k2;
+    int c=crnt[cnt][0];
+int d=crnt[cnt][1];
+n=n*(c*c+d*d);
+t1=a*c;t2=b*d;t3=a*d;t4=b*c;
+
+ if((t1-t2)*(t1-t2)+(t3+t4)*(t3+t4)==n){
+k1=(t1-t2);k2=(t3+t4);
+if(k1<0)k1=-k1;
+if(k2<0)k2=-k2;
+SOC(cnt+1,k1,k2);
+}
+
+if((t1+t2)*(t1+t2)+(t3-t4)*(t3-t4)==n){
+k1=(t1+t2);k2=(t3-t4);
+if(k1<0)k1=-k1;
+if(k2<0)k2=-k2;
+SOC(cnt+1,k1,k2);
+}
+}
+if(cnt==tgt)
+        System.out.println(a+" "+b);
+}
+//tgt should be number of factors used .... and SOQ representation of those factors should
+//be fed into crnt array. this works when the prime factors hv only one SOQ representation.
+// call the function as tgt=number of factors used , SOC( 1,crnt[0][0],crnt[0][1])

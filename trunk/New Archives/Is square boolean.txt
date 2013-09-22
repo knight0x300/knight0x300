@@ -1,0 +1,6 @@
+ static boolean issqr(int n){
+    int i=(int)Math.sqrt(n);
+    if(n-i*i==0)
+    return true;
+    else return false;
+    }

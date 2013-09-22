@@ -1,0 +1,9 @@
+ public static long maxpw(double n ,double p){
+   long tot=0;
+   double nn=n,pp=p;
+       while(nn/pp>=1)
+       {tot+=(long)(nn/pp);
+       nn=nn/pp;}
+   return tot;
+   
+   }

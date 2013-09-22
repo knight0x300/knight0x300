@@ -1,0 +1,15 @@
+static int[][]  Triples = new int[10000][3];
+   static int zz=0;
+   static int N=0;///upperbound
+   static void tripleg(int c,int b, int a){
+    if(c<=N)
+    {     
+    Triples[zz][0]=c;
+    Triples[zz][1]=b;
+    Triples[zz][2]=a;
+    zz++;
+      //  System.out.println(c+" "+b+" "+a);
+    tripleg(2*a-2*b+3*c,2*a-b+2*c,a-2*b+2*c);
+    tripleg(2*a+2*b+3*c,a+2*b+2*c,2*a+b+2*c);
+    tripleg(-2*a+2*b+3*c,-a+2*b+2*c,-2*a+b+2*c);
+    }}

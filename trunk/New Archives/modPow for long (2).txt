@@ -1,0 +1,11 @@
+static long modPow(long a, int pow) {
+		long res = 1;
+		while (pow > 0) {
+			if ((pow & 1) != 0) {
+				res = res * a % MOD;
+			}
+			pow >>= 1;
+			a = a * a % MOD;
+		}
+		return res;
+	}

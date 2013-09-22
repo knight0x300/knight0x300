@@ -1,0 +1,54 @@
+ static int MAXV = 100;
+    ArrayList<Integer>[] graph = new ArrayList[MAXV];
+    boolean[] removed = new boolean[MAXV];
+    int[] sz = new int[MAXV];
+
+    void dfs(int p, int x) {
+
+        sz[x] = 1;
+        for (int i = 0; i < graph[x].size(); i++) {
+            int y = graph[x].get(i);
+            if (y != p && !removed[y]) {
+                dfs(x, y);
+                sz[x] += sz[y];
+            }
+        }
+    }
+
+    int find_center(int x) {
+        int p = -1;
+
+        dfs(-1, x);
+        int cap = sz[x] / 2;
+
+        while (true) {
+            boolean found = false;
+            for (int i = 0; i < graph[x].size(); i++) {
+                int y = graph[x].get(i);
+                if (!removed[y] && y != p && sz[y] > cap) {
+                    found = true;
+                    p = x;
+                    x = y;
+                    break;
+                }
+            }
+            if (!found) {
+                return x;
+            }
+        }
+      
+    }
+/*
+//input read
+int N = nextInt();
+
+		for (int i = 0; i < N; i++) {
+            graph[i]=new ArrayList<Integer>();
+        }
+        for (int i = 0; i < N; i++) {
+            int a = nextInt(), b = nextInt();
+            graph[a - 1].add(b - 1);
+            graph[b - 1].add(a - 1);
+        }
+
+*/
