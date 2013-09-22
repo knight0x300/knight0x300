@@ -1,0 +1,19 @@
+public static void generate(String prefix, String elements, int k) {
+        if (k == 0) {
+            System.out.println(prefix);
+            return;
+        }
+        for (int i = 0; i < elements.length(); i++)
+            generate(prefix + elements.charAt(i), elements.substring(i + 1), k - 1);
+    }  
+
+    // read in N and k from command line, and print all subsets of size k from N elements
+   
+
+//Ex
+ //   public static void main(String Args[] ) {
+ //      int N = 10;
+ //      int k = 3;
+ //      String elements = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ //      generate("", elements.substring(0, N), k);
+ //   }

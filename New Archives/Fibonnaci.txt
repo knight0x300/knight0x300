@@ -1,0 +1,21 @@
+package javaapplication164;
+
+//Author KNIGHT0X300 
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class JavaApplication164 {
+    
+    public static void main(String[] args) {
+   Scanner scn=new Scanner(System.in);
+   long l=scn.nextLong();
+   BigInteger b1,b2,b3;
+  b1=BigInteger.valueOf(1);
+  b2=BigInteger.valueOf(1);
+   for(int i=0;i<l-2;i++)
+   { b3=b1;b1=b2;
+       b2=b2.add(b3);}
+        System.out.println(b2);
+     }
+}

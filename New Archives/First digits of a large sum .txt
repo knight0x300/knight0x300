@@ -1,0 +1,36 @@
+  int N=sc.nextInt();
+     //int c=0;
+    // int j=1;
+    int a=sc.nextInt();
+     int b=sc.nextInt();
+     int t=a+b;
+     int ct=0;
+     for(int i=0;i<N-1;i++)
+     {
+      a=sc.nextInt();
+      b=sc.nextInt();
+     
+     if(a+b>9){
+         System.out.print(t+1);
+         for(int k=0;k<ct;k++)
+             System.out.print("0");
+     t=a+b-10;
+     ct=0;
+     }/////
+    if(a+b<9){
+        System.out.print(t);
+         for(int k=0;k<ct;k++)
+             System.out.print("9");
+      t=a+b;
+      ct=0;
+    }
+     if(a+b==9)
+     {
+     ct++;
+     }
+     }
+   
+    {     System.out.print(t);
+    for(int k=0;k<ct;k++)
+             System.out.print("9");} 
+     

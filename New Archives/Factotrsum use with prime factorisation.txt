@@ -1,0 +1,43 @@
+ static int[] Prime=new int[1000001];
+static  int Ppi=0; 
+static void Primegen(){
+    
+        for(int i=2;i<=1000000;i++)
+        {if(Prime[i]==0)
+        {Prime[Ppi]=i;
+        Ppi++;
+        for(int j=2;j*i<=1000000;j++)
+            Prime[j*i]=1;      
+        }
+            }
+      //  System.out.println(Ppi);
+      //  System.out.println(Prime[Ppi-1]);
+}
+    
+    static int[] Fact=new int[1000];//factors
+    static int t;//number of factors
+  //  static int[]  Prime=new int[2433654] ; //Primes should be in the array
+    public static void factrs( int n){
+      int te,z;  
+    te=n;t=0;
+    for(z=0;Prime[z]<=te/Prime[z];z++)
+    {if(te%Prime[z]==0){Fact[t]=Prime[z];t++;te=te/Prime[z];z--;}}
+    if(te!=1)Fact[t]=te;t++;
+    }
+    
+public static int factorsum(int n){
+int t1=0,k1=0,r=1;
+    factrs(n);    
+
+for(int j=0;j<t;j++)
+        {
+        if(Fact[j]!=t1)
+        {if(j!=0)
+            r=(int)(r*(Math.pow(Fact[j-1],k1+1)-1)/(Fact[j-1]-1));
+        t1=Fact[j];k1=1;       
+        }
+        else {k1++;}
+        }
+r=(int)(r*(Math.pow(Fact[t-1],k1+1)-1)/(Fact[t-1]-1));
+return r;
+}

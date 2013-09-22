@@ -1,0 +1,2 @@
+long time = System.nanoTime();
+ System.out.println("Finished in: " + (System.nanoTime() - time) / Math.pow(10, 6) + "ms");

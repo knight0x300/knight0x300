@@ -1,0 +1,3 @@
+ public static boolean Palin(String stringToTest) {
+    String reversedCopy = new StringBuffer(stringToTest).reverse().toString();
+    return reversedCopy.equals(stringToTest);}

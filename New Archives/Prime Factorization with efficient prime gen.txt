@@ -1,0 +1,47 @@
+ static int[] Fact=new int[1000];
+    static int t;
+    
+    public static void factrs( int n){
+      int te,z;  
+    te=n;t=0;
+    for(z=0;Primes[z]<=te/Primes[z];z++)
+    {if(te%Primes[z]==0){Fact[t]=Primes[z];t++;te=te/Primes[z];z--;}}
+    if(te!=1)Fact[t]=te;t++;
+    }//factors in the array
+    
+
+    /**
+     * @param args the command line arguments
+     */
+    static  int[] Primes=new int[40000000];
+public static void Primegen(){
+
+    
+        Primes[0]=2;Primes[1]=3;Primes[2]=5;Primes[3]=7;
+        for(int i=1;i<4;i++)
+        {int te=Primes[i];
+            for(int j=3;;j=j+2)
+            {   if(te*j>93)break;
+                Primes[(te*j-1)/2]=1;}}
+       int t=4;
+        for(int i=4;i<47;i++)
+            if(Primes[i]==0){Primes[t]=2*i+1;t++;}//t=24
+       for(int i=1;i<24;i++)
+        {int te=Primes[i];
+            for(int j=3;;j=j+2)
+            {   if(te*j>93){
+                if(te*j>8944)break;
+                Primes[(te*j-1)/2]=1;}}}
+        for(int i=47;i<4472;i++)
+            if(Primes[i]==0){Primes[t]=2*i+1;t++;}//t=1112
+        for(int i=1;i<1112;i++)
+        {int te=Primes[i];
+            for(int j=3;;j=j+2)
+            {   if(te*j>8944){
+                if(te*j>80000000)break;
+                Primes[(te*j-1)/2]=1;}}}
+        for(int i=4472;i<40000000;i++)
+            if(Primes[i]==0){Primes[t]=2*i+1;t++;}//t=4669382 note=Prime[n-1]gives nth prime upto 80000000
+          
+        System.out.println(t);
+        System.out.println(Primes[t-1]);}

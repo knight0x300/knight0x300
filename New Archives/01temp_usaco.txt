@@ -1,0 +1,107 @@
+/*
+ID: knight04
+LANG: JAVA
+TASK: test
+*/
+import static java.lang.Math.*;
+import static java.util.Arrays.*;
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+//Author KNIGHT0X300 
+public class test {
+    
+   
+
+
+   public static void main(String[] args) throws IOException
+   {
+      new test().run();
+   }
+
+   StreamTokenizer in;
+   PrintWriter out;
+    //deb////////////////////////////////////////////////
+    public static void deb(String n ,Object n1){
+     System.out.println(n+" is : "+n1);
+ }  
+    public static void deb(int[] A){
+       
+        for (Object oo : A) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+ }
+     public static void deb(long[] A){
+       
+        for (Object oo : A) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+ }
+      public static void deb(String[] A){
+       
+        for (Object oo : A) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+ }
+      public static void deb(int[][] A){
+          for (int i = 0; i < A.length; i++) {
+               for (Object oo : A[i]) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+          }
+       
+ }
+        public static void deb(long[][] A){
+          for (int i = 0; i < A.length; i++) {
+               for (Object oo : A[i]) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+          }
+       
+ }
+          public static void deb(String[][] A){
+          for (int i = 0; i < A.length; i++) {
+               for (Object oo : A[i]) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+          }
+       
+ }
+      /////////////////////////////////////////////////////////////
+   int nextInt() throws IOException
+   {
+      in.nextToken();
+      return (int)in.nval;
+   }
+   long nextLong() throws IOException
+   {
+      in.nextToken();
+      return (long)in.nval;
+   }
+  
+   void run() throws IOException
+   {
+     //  in = new StreamTokenizer(new BufferedReader(new FileReader("test.in")));
+      // out = new PrintWriter(new BufferedWriter(new FileWriter("test.out")));
+	 in = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+      out = new PrintWriter(new OutputStreamWriter(System.out));
+       solve();
+      out.flush();
+      out.close();
+   }
+
+   void solve() throws IOException
+   {
+      int a = nextInt();
+      int b = nextInt();
+      
+     // do the sum
+   }
+
+}

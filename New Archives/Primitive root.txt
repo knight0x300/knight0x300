@@ -1,0 +1,82 @@
+//ref Javaapplication 139
+
+import java.lang.Integer;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+
+public class Prime Primitive root {
+    
+static    TreeSet<Integer> ts=new TreeSet<Integer>();
+ private final static BigInteger ZERO = new BigInteger("0");
+    private final static BigInteger ONE  = new BigInteger("1");
+    private final static BigInteger TWO  = new BigInteger("2");
+    private final static SecureRandom random = new SecureRandom();
+
+    public static BigInteger rho(BigInteger N) {
+        BigInteger divisor;
+        BigInteger c  = new BigInteger(N.bitLength(), random);
+        BigInteger x  = new BigInteger(N.bitLength(), random);
+        BigInteger xx = x;
+
+        // check divisibility by 2
+        if (N.mod(TWO).compareTo(ZERO) == 0) return TWO;
+
+        do {
+            x  =  x.multiply(x).mod(N).add(c).mod(N);
+            xx = xx.multiply(xx).mod(N).add(c).mod(N);
+            xx = xx.multiply(xx).mod(N).add(c).mod(N);
+            divisor = x.subtract(xx).gcd(N);
+        } while((divisor.compareTo(ONE)) == 0);
+
+        return divisor;
+    }
+
+    public static void factor(BigInteger N) {
+        if (N.compareTo(ONE) == 0) return;
+        if (N.isProbablePrime(20)) {ts.add(N.intValue()); return; }
+        BigInteger divisor = rho(N);
+        factor(divisor);
+        factor(N.divide(divisor));
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+         Scanner scn = new Scanner(System.in);
+      int N=scn.nextInt();
+      BigInteger b;
+    //  for(int i=0;i<N;i++)
+      {
+      int n=scn.nextInt();//getting prime
+      if(n==3)
+              System.out.println(2);
+      else{
+      ts.clear();
+      b=BigInteger.valueOf(n-1);
+      factor(b);
+        //  System.out.println(ts);
+          int j;
+      for( j=n-1;;j--)
+      { int tt=0;
+      for(int h : ts.descendingSet())
+      { //System.out.println(h);
+      if((BigInteger.valueOf(j).modPow(BigInteger.valueOf(h), BigInteger.valueOf(n))).compareTo(BigInteger.valueOf(1))==0)
+      {tt=1;
+         // System.out.println("sldjf");
+          break;
+      }
+      }
+      if(tt==0)
+          break;
+      }
+          System.out.println(j);
+      }}
+        
+        
+        
+        
+    }
+}

@@ -1,0 +1,97 @@
+     static List<Integer> Psig = new ArrayList<Integer>();  //This list is the prime signature
+ static List<Long> Facts = new ArrayList<Long>();     //this list is corresponding primes  
+ public static void PrimeSignature_n_PrimeFactors(long n){  
+    Psig.clear();
+        Facts.clear();
+  
+   long te;  
+     int z=0,t; 
+    te=n;
+    while(te>1)
+    { t=0;
+     Boolean chk=true;
+    for(;Primes[z]*Primes[z]<=te;z++)
+    {if(te%Primes[z]==0){
+        Facts.add((long)Primes[z]);
+            while(te%Primes[z]==0)
+            {t++;te=te/Primes[z];}
+            Psig.add(t);
+            chk=false;
+            break;
+    }  }
+            if(chk)
+              {Facts.add(te);
+               Psig.add(1);
+               break;
+                       }}
+       // System.out.println(Psig+"ajncasj  "+Facts);
+        
+        
+     //  return Facts;
+    }
+    static int ub=44444;//upper bound
+static int[] Primes=new int[ub+1];
+static  int Ppi=0; 
+static void Primegen(){
+    
+        for(int i=2;i<=ub;i++)
+        {if(Primes[i]==0)
+        {Primes[Ppi]=i;
+        Ppi++;
+        for(int j=2;j*i<=ub;j++)
+            Primes[j*i]=1;      
+        }
+            }
+        System.out.println(Ppi);
+        System.out.println(Primes[Ppi-1]);
+}
+   public static long SOS(long n){
+   if(n==0)
+       return 1;
+   else
+   {
+   long n1=n;    
+   int i=0;
+   while(n1%2==0)
+   {
+   n1/=2;
+   i++;  
+   }
+   int chck=0;
+      
+   PrimeSignature_n_PrimeFactors(n1);
+   long B=1,ans;
+   if(Psig.size()==0)B++;
+   for(int j=0;j<Psig.size();j++){ 
+    if((Facts.get(j) %4==3)&&(Psig.get(j)%2==1))
+    {chck=1;
+    break;}
+    if(Facts.get(j) %4==1)
+     {  B*=Psig.get(j)+1;
+              }
+    
+   }
+   if(chck==1)
+       return 0;
+   else {
+        int k=(int)Math.sqrt(n/2);
+       
+   if(B%2==0)
+   { ans=B/2;}
+   else
+   { ans=(B-(int)Math.pow(-1, i))/2;
+    }
+   int k1=0;
+   if(n-2*k*k==0)k1++;
+   k=(int)Math.sqrt(n);
+   if(n-k*k==0)k1++;
+   if(k1>0)
+       ans=(ans-k1)*8+4*k1;
+   else
+       ans*=8;
+   return ans;
+   
+   }
+       
+   }}  
+   

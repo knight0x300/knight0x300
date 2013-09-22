@@ -1,0 +1,53 @@
+//deb////////////////////////////////////////////////
+    public static void deb(String n ,Object n1){
+     System.out.println(n+" is : "+n1);
+ }  
+    public static void deb(int[] A){
+       
+        for (Object oo : A) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+ }
+     public static void deb(long[] A){
+       
+        for (Object oo : A) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+ }
+      public static void deb(String[] A){
+       
+        for (Object oo : A) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+ }
+      public static void deb(int[][] A){
+          for (int i = 0; i < A.length; i++) {
+               for (Object oo : A[i]) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+          }
+       
+ }
+        public static void deb(long[][] A){
+          for (int i = 0; i < A.length; i++) {
+               for (Object oo : A[i]) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+          }
+       
+ }
+          public static void deb(String[][] A){
+          for (int i = 0; i < A.length; i++) {
+               for (Object oo : A[i]) {
+            System.out.print(oo+" ");
+        }
+        System.out.println("");
+          }
+       
+ }
+      /////////////////////////////////////////////////////////////

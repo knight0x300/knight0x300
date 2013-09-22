@@ -1,0 +1,11 @@
+ static int[] Fact=new int[1000];//factors
+    static int t;//number of factors
+    static int[]  Prime=new int[2433654] ; //Primes should be in the array
+    public static void factrs( int n){
+      int te,z;  
+    te=n;t=0;
+    for(z=0;Prime[z]<=te/Prime[z];z++)
+    {if(te%Prime[z]==0){Fact[t]=Prime[z];t++;te=te/Prime[z];z--;}}
+    if(te!=1)Fact[t]=te;t++;
+    }
+    

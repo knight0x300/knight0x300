@@ -1,0 +1,14 @@
+int h;  
+factrs(h);
+       int tot=1;
+      int p=0;
+     
+      for(int j=0;j<t-1;j++)
+       {
+       if(Fact[j]!=Fact[j+1])
+       {tot*=(p+1);p=0;}
+       else
+          p++; 
+       
+       }
+      tot*=(p+1);

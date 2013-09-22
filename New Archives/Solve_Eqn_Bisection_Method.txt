@@ -1,0 +1,22 @@
+ static  double e=Math.pow(10,-14);
+            
+  static double F( double x ){
+    // return eqn in the for F(x)==0;
+    return x*x-5;
+    }
+  static double ssolve( double a0, double a1){  //whr F(a0)<0 and F(a1)>0
+   double x0=a0,x1=a1,x3=0;
+   double F3=2*e;
+    
+      while(!((F3<e)&&(F3+e>0)))
+      {   x3=(x0+x1)/2;
+          F3=F(x3);
+           if(F3>0)
+            x1=x3;
+          else
+            x0=x3;
+        //  System.out.println(x3);
+      }
+      
+      return x3;
+   }  

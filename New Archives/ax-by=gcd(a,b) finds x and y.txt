@@ -1,0 +1,55 @@
+    public static long gcd(long a, long b) {
+  long c = 0;
+
+if(a<0)  a=-a;
+  if(b<0)  b=-b;
+  while (b>0) {
+     c = a % b;
+     a = b;
+     b = c;
+  }
+  return a;
+}
+
+static  long aa (long a1,long b ,long d){
+  long k1,k2;
+  long GCD=gcd(a1,b);
+  long n=0;
+ if(d%GCD==0)
+   n=d/GCD;
+ else
+        System.out.println("No Solution");
+        a1 /= GCD;
+        b/=GCD;
+      if(a1==1)
+  {k1=b+1;k2=-1;}
+      else if(b==1)
+      {k1=1;k2=-a1+1;}
+     else  { 
+      long[][] a=new long[100][3];
+        int h=0;
+        a[h][0]=a1;
+        a[h][1]=1;
+        a[h][2]=0;        
+        h++;
+       a[h][0]=b%a1;
+        a[h][1]=-b/a1;
+        a[h][2]=1;
+        h++;
+       
+        for(;;)
+        {if(a[h-1][0]==1)
+        { k1=a[h-1][1];k2=a[h-1][2];
+            break;}
+        a[h][0]=a[h-2][0]%a[h-1][0];
+        a[h][1]=a[h-2][1]-(a[h-2][0]/a[h-1][0])*a[h-1][1];
+        a[h][2]=a[h-2][2]-(a[h-2][0]/a[h-1][0])*a[h-1][2];
+       
+        h++;
+        }}
+          //  System.out.println("otejn");
+            System.out.println(k1*n+" "+k2*n);
+
+return k1*n;
+
+}

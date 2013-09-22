@@ -1,0 +1,21 @@
+  int N=nextInt();
+      long mod=1000000007;
+      int maxpower=11;
+      long[][][] matpow=new long[maxpower+1][N][N];
+        for (int row = 0; row < N; row++) {
+            for (int col = 0; col < N; col++) {
+                matpow[0][row][col]=nextInt();
+            }
+        }
+        for (int pow = 1; pow <= maxpower; pow++) {
+            for (int row = 0; row < N; row++) {
+                for (int col = 0; col < N; col++) {
+                    for (int tt = 0; tt < N; tt++) {
+                       matpow[pow][row][col]+=matpow[pow-1][row][tt]*matpow[pow-1][tt][col];  
+  
+                    }
+                      matpow[pow][row][col]%=mod;
+                }
+            }
+              
+        }

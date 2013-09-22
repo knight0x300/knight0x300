@@ -1,0 +1,19 @@
+ static int[] enter;
+    static int[] exit;
+    static int time;
+
+    static void dfs(int v, int p) {
+        enter[v] = time++;
+        for (int i : edges[v]) {
+            if (i == p) continue;
+            dfs(i, v);
+        }
+        exit[v] = time;
+    }
+	/*
+	time = 0;
+        enter = new int[n];
+        exit = new int[n];
+        dfs(0, -1);
+	
+	*/

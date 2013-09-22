@@ -1,0 +1,9 @@
+static double angle123(double x1,double y1,double x2,double y2,double x3,double y3)
+   {
+   double d1=(x2-x1)*(x2-x1)+(y2-y1)*(y2-y1),d2=(x3-x1)*(x3-x1)+(y3-y1)*(y3-y1),d3=(x2-x3)*(x2-x3)+(y2-y3)*(y2-y3);
+   double ret;
+   ret=(d1+d3-d2)/(2*Math.sqrt(d1*d3));
+      ret=Math.min(1.0, Math.max(ret, -1.0));
+   return Math.acos(ret);
+   }
+// angle between 1-2 and 2-3

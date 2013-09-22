@@ -1,0 +1,8 @@
+int[] A=new int[100];
+      int j=0;
+      while(tmp>0)
+      {
+      A[j]=tmp%N;
+      tmp=tmp/N;
+      j++;         
+      }

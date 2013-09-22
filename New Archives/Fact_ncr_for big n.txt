@@ -1,0 +1,18 @@
+public static BigInteger fact(long n){
+long i=n,j;
+BigInteger result;
+result = BigInteger.valueOf(1);
+for (j=i;j>=1;j--)
+result = result.multiply(BigInteger.valueOf(j));
+return result;
+}
+
+public static BigInteger ncr(long n,long r){
+long i=n,j;
+BigInteger result;
+result = BigInteger.valueOf(1);
+for (j=n;j>=n-r+1;j--)
+result = result.multiply(BigInteger.valueOf(j));
+   
+return result.divide(fact(r));
+}

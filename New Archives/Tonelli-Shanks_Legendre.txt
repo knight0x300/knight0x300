@@ -1,0 +1,182 @@
+import java.math.* ;
+import java.util.* ;
+
+class Arith {
+
+  /*
+    Racine carrée entière.
+    Renvoie le nombre maximal dont le carré est inférieur ou égal à n
+    [Méthode dite de Newton]
+  */
+  
+  static BigInteger sqrt(BigInteger n) {
+    int nb = n.bitLength() ;
+    BigInteger a , b ;
+
+    a = BigInteger.ONE;
+    a = a.shiftLeft((nb+1)/2) ;
+
+    do {
+      b = a ;
+      a = n.divide(a).add(a) ;
+      a = a.shiftRight(1) ;
+    } while (a.compareTo(b) < 0) ;
+
+    return b ;
+  }
+
+  static BigInteger nrt(BigInteger n, int k) {
+    int nb = n.bitLength() ;
+    BigInteger a , b ;
+    BigInteger KM1 = BigInteger.valueOf(k-1) ;
+    BigInteger K = BigInteger.valueOf(k) ;
+
+    a = BigInteger.ONE;
+    a = a.shiftLeft((nb+k-1)/k) ;
+
+    do {
+      b = a ;
+      a = n.divide(a.pow(k-1)).add(a.multiply(KM1)) ;
+      a = a.divide(K) ;
+    } while (a.compareTo(b) < 0) ;
+
+    /*
+    if (b.pow(k).compareTo(n) > 0) {
+      System.err.println("BUG nrt: too big") ;
+      System.exit(2) ;
+    }
+
+    if (b.add(BigInteger.ONE).pow(k).compareTo(n) <= 0) {
+      System.err.println("BUG nrt: too small") ;
+      System.exit(2) ;
+    }
+    */
+    return b ;
+  }
+
+  public static void main(String [] arg) {
+    System.out.println(nrt(new BigInteger(arg[0]),
+                           Integer.parseInt(arg[1])));
+  }
+
+  /*
+    Calcul du symbole de legendre, noté bizarrement (n/p)
+    Pour p premier on a :
+      - (n/p) = 0, ssi p divise n.
+      Et sinon, 
+      - (n/p) = 1  ,ssi n est un résidu quadratique modulo p.
+      - (n/p) = -1 ,ssi n n'est pas un résidu quadratique modulo p.
+  */
+
+  private static int legendre(BigInteger n, int p) {
+    int a = n.remainder(BigInteger.valueOf(p)).intValue() ;
+    int m = p ;
+    int t = 1 ;
+
+    while (a != 0) {
+      int k = m % 8 ;
+      boolean zyva = k == 3 || k == 5 ;
+
+      while (a % 2 == 0) {
+        a /= 2 ;
+        if (zyva)
+          t = -t ;
+      }
+      int swap = a ; a = m ; m = swap ;
+      int x = a % 4, y = m % 4 ;
+      if (x == 3 && x == y)
+        t = -t ;
+      a = a % m ;
+    }
+    if (m == 1)
+      return t ;
+    else
+      return 0 ;
+  }
+
+  static boolean isResidue(BigInteger n, int p) {
+    int r = legendre(n, p) ;
+    if (r == 1)
+      return true ;
+    else if (r == -1)
+      return false ;
+    else {
+      throw new Error(p + " divise " + n) ;
+    }
+  }
+
+  static Random random = new Random() ;
+  
+
+  // Quelques fonctions modulaires 
+  private static int multMod(int x, int y, int m) {
+    long w = (long)x * (long)y ;
+    return (int)(w % m) ;
+  }
+
+  private static int shiftMod(int x, int n, int m) {
+    long w = (long)x << n ;
+    return (int)(w % m) ;
+  }
+
+  private static int powMod(int x, int k, int m) {
+    if (k == 0)
+      return 1 ;
+    else {
+      int r = powMod(x, k/2, m) ;
+      r = multMod(r, r, m) ;
+      if (k % 2 == 0)
+        return r ;
+      else
+        return multMod(x, r, m) ;
+    }
+  }
+
+
+  /*
+    Calculer une solution de l'équation x^2 = n (mod p).
+
+    Important:
+    On suppose que cette solution existe, c'est dire que
+    n est un résidu quadratique modulo p.
+    [Algorithme de Shanks-Tonelli.]
+  */
+
+  private static int doSqrtMod(BigInteger n, int p) {
+    int a = n.remainder(BigInteger.valueOf(p)).intValue() ;
+
+    if (p % 4 == 3) {
+      return powMod(a, (p+1)/4, p) ;
+    } else {
+      int d ;
+      do {
+        d = 2+random.nextInt(p-2) ;
+      } while (isResidue(BigInteger.valueOf(d), p)) ;
+      int s = 0 ;
+      int t = p-1 ;
+      while (t % 2 == 0) {
+        s++ ; t /= 2 ;
+      }
+      int A = powMod(a, t, p) ;
+      int D = powMod(d, t, p) ;
+      int m = 0 ;
+      int ADpowM = A ;
+      int twoPowI = 1 ;
+      int D2 = D ;
+      for (int exp = 1 << s-1 ; exp !=0 ;
+           exp >>>= 1, twoPowI <<= 1, D2 = multMod(D2, D2, p)) {
+        if (powMod(ADpowM, exp, p) == p-1) {
+          m += twoPowI ;
+          ADpowM = multMod(ADpowM, D2, p) ;
+        }
+      }
+      return multMod(powMod(a, (t+1)/2, p), powMod(D, m/2, p), p) ;
+    }
+  }
+
+  static int sqrtMod(BigInteger n, int p) {
+    int r = doSqrtMod(n, p) ;
+    return r ;
+  }
+  
+}

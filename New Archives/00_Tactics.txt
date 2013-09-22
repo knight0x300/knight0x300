@@ -1,0 +1,18 @@
+1.<------------------------------------------------------------------>
+
+Given an array a with 0<a[i]<=M while iterating from i=0 to i=a.size-1 ,pairs i,j such that i < j and a[i] > a[j]
+   long count(int[] A){
+  int len=A.length;
+  long ret= ((long)len*(long)(len-1))/2;             // wrong when a.length() = 2^m , when i=a.length()-1; if(A[N-1]=N; replace a.size with a.size()-1;
+  int M=100;//maxElementSize+5
+  int[] c=new int[M+1]; 
+for(int i = 0;i < len;i++)
+  {
+   for(int j = A[i];j > 0;j -= j & -j) ret -= c[j] ;
+   for(int j = A[i];j < M;j += j & -j) c[j]++ ;  
+  }
+    
+
+return ret;
+}
+ 

@@ -1,0 +1,55 @@
+public static void Primegen(){
+
+    
+        Primes[0]=2;Primes[1]=3;Primes[2]=5;Primes[3]=7;
+        for(int i=1;i<4;i++)
+        {int te=Primes[i];
+            for(int j=3;;j=j+2)
+            {   if(te*j>93)break;
+                Primes[(te*j-1)/2]=1;}}
+       int t=4;
+        for(int i=4;i<47;i++)
+            if(Primes[i]==0){Primes[t]=2*i+1;t++;}//t=24
+       for(int i=1;i<24;i++)
+        {int te=Primes[i];
+            for(int j=3;;j=j+2)
+            {   if(te*j>93){
+                if(te*j>8944)break;
+                Primes[(te*j-1)/2]=1;}}}
+        for(int i=47;i<4472;i++)
+            if(Primes[i]==0){Primes[t]=2*i+1;t++;}//t=1112
+        for(int i=1;i<1112;i++)
+        {int te=Primes[i];
+            for(int j=3;;j=j+2)
+            {   if(te*j>8944){
+                if(te*j>80000000)break;
+                Primes[(te*j-1)/2]=1;}}}
+        for(int i=4472;i<40000000;i++)
+            if(Primes[i]==0){Primes[t]=2*i+1;t++;}//t=4669382 note=Prime[n-1]gives nth prime upto 80000000
+        //new  
+        for(int i=10000000;i<40000000;i++)Primes[i]=0;
+         for(int i=1;i<1420;i++)
+        {int te=Primes[i];
+        int k=80000000/Primes[i]+1;
+        if(k%2==0)k=k+1;
+            for(int j=k;;j=j+2)//80000000/Primes[i]+
+            {   if(te*j>80000000){
+                if(te*j>140000000)break;
+                Primes[(te*j-1)/2-30000000]=1;}}}
+        for(int i=10000000;i<40000000;i++)
+            if(Primes[i]==0){Primes[t]=2*(30000000+i)+1;t++;}
+        //
+        for(int i=10000000;i<40000000;i++)Primes[i]=0;
+         for(int i=1;i<1664;i++)
+        {int te=Primes[i];
+        int k=140000000/Primes[i]+1;
+        if(k%2==0)k=k+1;
+            for(int j=k;;j=j+2)//80000000/Primes[i]+
+            {   if(te*j>140000000){
+                if(te*j>200000000)break;
+                Primes[(te*j-1)/2-60000000]=1;}}}
+        for(int i=10000000;i<40000000;i++)
+            if(Primes[i]==0){Primes[t]=2*(60000000+i)+1;t++;}
+        
+        System.out.println(t);
+        System.out.println(Primes[t-1]);}
